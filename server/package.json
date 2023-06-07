@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "ws": "^8.11.0"
+  }
+}
