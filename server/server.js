@@ -10,11 +10,10 @@ function start() {
     wss.on('connection', (wsClient) => {
         wsClient.on('message', async(message) => {
             const req = JSON.parse(message.toString());
-            if(req.event === 'connect') {
+            if (req.event === 'connect') {
                 wsClient.nickname = req.payload.username;
                 initGames(wsClient, req.payload.gameId);
             };
-
             broadcast(req); 
         });
     });
@@ -28,7 +27,7 @@ function start() {
             games[gameId] = [...games[gameId], ws];
         };
 
-        if (games[gameId] && games[gameId] === 2) {
+        if (games[gameId] && games[gameId].length === 2) {
             games[gameId] = games[gameId].filter(wsc => wsc.nickname !== ws.nickname);
             games[gameId] = [...games[gameId], ws];
         }

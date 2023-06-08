@@ -17,7 +17,6 @@ const GamePage = () => {
     const navigate = useNavigate();
 
     const { gameId } = useParams();
-
     useEffect(() => {
         wss.send(JSON.stringify({ event: 'connect', payload: { username: localStorage.nickName, gameId } }))
         restart();
@@ -41,7 +40,6 @@ const GamePage = () => {
     wss.onmessage = function(response) {
         const { type, payload } = JSON.parse(response.data);
         const { username, x, y, canStart, rivalName, success } = payload;
-        console.log(payload)
         switch (type) {
             case 'connectToPlay':
                 if (!success) {

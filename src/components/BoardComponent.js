@@ -16,7 +16,7 @@ const BoardComponent = ({ board, setBoard, shipsReady, isMyBoard, canShoot, shoo
     };
 
     function updateBoard() {
-        const newBoard = board.getCopeBoard();
+        const newBoard = board.getCopyBoard();
         setBoard(newBoard);
     }
 
